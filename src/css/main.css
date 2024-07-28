@@ -76,7 +76,9 @@
 }
 .btn-modify{
     background-color: var(--pale-blue);
-    color: var(--blue);
+    a{
+        color: var(--blue);
+    }
 }
 
 .btn-confirm{
@@ -148,6 +150,10 @@
     text-align: center;
 
     padding: 2rem;
+  }
+
+  .money{
+    color: var(--gray-text);
   }
 
   .main-card{
@@ -241,6 +247,7 @@
 
 .money{
     font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
 }
 
 .booking-choices{
@@ -265,7 +272,7 @@ a{
   .booking-results{
     .detail-options-card{
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 25% 37.5% 37.5%;
         grid-template-rows: 1fr;
         
         align-items: center;
@@ -276,17 +283,39 @@ a{
         background-color: var(--white);
         /* box-shadow: var(--pale-blue) 0 0 50px; */
 
+        .prices-section{
+            border-left: solid 3px var(--pale-gray);
+            padding-left: 2rem;
+
+            div{
+                color: var(--medium-gray);
+                font-weight: bolder;
+            
+            }
+            .detail-label{
+                margin-top: 0.35rem;
+                font-weight:lighter;
+            }
+
+            display: grid;
+            grid-template-areas: "
+                hotel-name hotel name
+                prices     prices
+            ";
+
+        }
         .hotel-name{
             font-family: 'Arapey', serif;
             font-style: italic;
             font-size: 2.5rem;
+            grid-area: "hotel-name";
         }
         .other-prices{
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            grid-template-columns: 1fr 3cqmax;
-
             text-align: left;
+
+            margin-top: 0.35rem;
         }
     }
     
