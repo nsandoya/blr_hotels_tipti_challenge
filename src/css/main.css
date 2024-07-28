@@ -90,7 +90,8 @@
   h1{
     font-family: 'Raleway', sans-serif;
     text-align: center;
-    color: white;
+    color: var(--gray-text);
+    font-size: 3rem;
 
     margin-bottom: 1rem;
   }
@@ -102,7 +103,7 @@
     justify-items: center;
     z-index: 1;
         .see-results{
-            background-color: var(--gold);
+            background-color: var(--blue);
             color: var(--white);
 
             margin-top: 2rem;
