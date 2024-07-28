@@ -38,10 +38,101 @@
     scroll-behavior: smooth;
   }
 
+  :root{
+    --gray-text: #535353;
+    --pale-gray: #b8b6b6;
+    --white: #faf5ee;
+    --green: #88bb6c;
+    --gold: #b4a05b;
+    --pale-gold: #d4ccbb;
+    --bone: #f4ede5;
+    --blue: #94b9ff;
+    --pale-blue: #dde6fd;
+  }
+
+  /* Buttons */
+  .btn{
+    border: none;
+    text-align: center;
+
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 20px;
+
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bolder;
+  }
+
+
+  /* Fonts */
+  h1{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    color: white;
+
+    margin-bottom: 1rem;
+  }
+
+  .booking{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+
+        .see-results{
+            background-color: var(--gold);
+            color: var(--white);
+
+            margin-top: 2rem;
+        }
+  }
+
+  .booking-choices{
+    font-family: 'Raleway', sans-serif;
+    color: var(--gray-text);
+    box-shadow: var(--pale-blue) 0 0 50px;
+    text-align: center;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+
+    align-items: center;
+    padding: 2rem;
+
+    h4{
+        margin-bottom: 0.8rem;
+    }
+    span, p{
+        font-size: 1.2rem;
+    }
+  }
+
+  .date{
+    border-inline: solid 1px var(--pale-gray);
+  }
+
+  .date{
+    padding: 1rem;
+  }
+
+  .chosen-date{
+    font-family: 'Montserrat', sans-serif;
+  } 
+
+  .switch-div{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    justify-items: center;
+
+    max-width: 80%;
+    margin: 0 auto;
+  }
  
  /* Switch - Fuente: https://www.w3schools.com/howto/howto_css_switch.asp */
  /* The switch - the box around the slider */
- .switch {
+  .switch {
     position: relative;
     display: inline-block;
     width: 60px;
@@ -56,7 +147,7 @@
   }
   
   /* The slider */
-  .slider {
+  .switch .slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -68,7 +159,7 @@
     transition: .4s;
   }
   
-  .slider:before {
+  .switch .slider:before {
     position: absolute;
     content: "";
     height: 26px;
@@ -80,15 +171,15 @@
     transition: .4s;
   }
   
-  input:checked + .slider {
+  .switch input:checked + .slider {
     background-color: #2196F3;
   }
   
-  input:focus + .slider {
+  .switch input:focus + .slider {
     box-shadow: 0 0 1px #2196F3;
   }
   
-  input:checked + .slider:before {
+  .switch input:checked + .slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
@@ -136,10 +227,22 @@
     z-index: -1;
   }
 
+/* Booking section */
+.booking-data{
+    width: 900px;
+    max-width: 1000px;
+    height: 180px;
+    max-height: 200px;
+    background-color: var(--white);
+    border-radius: 20px;
+
+    display: grid;
+    grid-template-columns: repeat(6fr, 2);
+}
 /* Results section */
 .results{
-  background: linear-gradient(#8eaec5, #d4dde2);
-  background: radial-gradient(circle at center,#d4dde2, #8eaec5 100%);  
+  /* background: linear-gradient(#8eaec5, #d4dde2); */
+  background: radial-gradient(circle at center, var(--pale-blue), var(--blue) 100%);  
 }
 
 /* QA Button */
@@ -154,7 +257,7 @@
     height: 50px;
     border-radius: 180px;
     background-color: #fff9f0;
-    box-shadow: #aeb5b9 0 0 10px;
+    box-shadow: var(--pale-blue) 0 0 10px;
     border: none;
     transition: all 0.4s ease-in-out;
   }

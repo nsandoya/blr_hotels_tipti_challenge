@@ -8,7 +8,7 @@
 </head>
 <body>
     <main class="h-wrapper">
-        <header>
+        <header id="booking">
             <img src="./src/assets/img/home_irene_fondo_1920x1080_2.webp" class="background">
             <img src="./src/assets/img/home_irene_hojas_1920x1080_3.webp" class="foreground d-none d-xl-block">
             <div class="booking">
@@ -34,23 +34,25 @@
                         </div>
                         <div class="rewards">
                             <h4 class="card-subtitle">¿Programa de Recompensas?</h4>
-                            <span>Sí</span>
-                            <label class="switch">
-                                <input type="checkbox">
-                                <span class="slider round"></span>
-                            </label>
-                            <span>No</span>
+                            <div class="switch-div">
+                                <span>Sí</span>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                                <span>No</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="btn see-results"></div>
                 </div>
+                <div ><button class="btn see-results">Consultar</button></div>
                 <div class="hotel-details">
     
                 </div>
             </div>
         </header>
     
-        <div class="results">
+        <div class="results" id="results">
             <div class="booking-results">
                 <h3>Hotel Recomendado</h3>
                 <div class="main-card">
