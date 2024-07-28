@@ -1,3 +1,44 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+  .arapey-regular {
+    font-family: "Arapey", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .arapey-regular-italic {
+    font-family: "Arapey", serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .montserrat{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .raleway {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+/* General */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+ 
  /* Switch - Fuente: https://www.w3schools.com/howto/howto_css_switch.asp */
  /* The switch - the box around the slider */
  .switch {
@@ -61,3 +102,59 @@
   .slider.round:before {
     border-radius: 50%;
   } 
+
+/* Styles */
+  .h-wrapper {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    perspective: 10px;
+  }
+  .h-wrapper header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transform-style: preserve-3d;
+    z-index: -1;
+  }
+  .h-wrapper header .background {
+    transform: translateZ(-10px) scale(2);
+  }
+  .h-wrapper header .foreground {
+    transform: translateZ(1px) scale(1);
+  }
+  .h-wrapper header .background,
+  .h-wrapper header .foreground {
+    position: absolute;
+    height: 110%;
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    z-index: -1;
+  }
+
+/* QA Button */
+  .btn-qa {
+    position: fixed;
+    right: 40px;
+    bottom: 15px;
+    z-index: 10;
+  }
+  .btn-qa button {
+    width: 50px;
+    height: 50px;
+    border-radius: 180px;
+    background-color: #fff9f0;
+    box-shadow: #aeb5b9 0 0 10px;
+    border: none;
+    transition: all 0.4s ease-in-out;
+  }
+  .btn-qa button:hover {
+    cursor: pointer;
+
+    border: none;
+    box-shadow: #5d99a0 0 0 15px;
+    transform: translateY(-2px);
+  }
