@@ -98,7 +98,7 @@
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
-
+    z-index: 1;
         .see-results{
             background-color: var(--gold);
             color: var(--white);
@@ -126,11 +126,11 @@
     display: grid;
     grid-template-columns: repeat(6fr, 2);
 
-    .rewards{
-        .card-subtitle{
-            margin-bottom: 0.8rem;
-        }
+    .card-subtitle{
+        margin-bottom: 0.8rem;
     }
+    /* .rewards{
+    } */
 }
 /* Results section */
 .results{
@@ -256,8 +256,12 @@
     span, p{
         font-size: 1.2rem;
     }
-  }
+}
 
+a{
+    text-decoration:none !important;
+    color: var(--white);
+}
   .booking-results{
     .detail-options-card{
         display: grid;
@@ -265,12 +269,18 @@
         grid-template-rows: 1fr;
         
         align-items: center;
+        text-align: left;
         padding: 2rem;
         margin-bottom: 1.2rem;
         
         background-color: var(--white);
         /* box-shadow: var(--pale-blue) 0 0 50px; */
 
+        .hotel-name{
+            font-family: 'Arapey', serif;
+            font-style: italic;
+            font-size: 2.5rem;
+        }
         .other-prices{
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -380,6 +390,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     perspective: 10px;
+    
   }
   .h-wrapper header {
     position: relative;
@@ -406,7 +417,17 @@
     z-index: -1;
   }
 
-
+  .booking{
+    width: 100%;
+    position: absolute;
+    top:25%;
+    .booking-data{
+        width: 900px;
+        margin: 0 auto;
+    }
+    /* margin: 0 18%; */
+    z-index: 1;
+  }
 
 /* QA Button */
   .btn-qa {
