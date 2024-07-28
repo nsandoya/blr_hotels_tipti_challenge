@@ -135,6 +135,12 @@
     z-index: -1;
   }
 
+/*  */
+.results{
+  background: linear-gradient(#8eaec5, #d4dde2);
+  background: radial-gradient(circle at center,#d4dde2, #8eaec5 100%);  
+}
+
 /* QA Button */
   .btn-qa {
     position: fixed;
