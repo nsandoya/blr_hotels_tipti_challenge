@@ -104,6 +104,7 @@
   } 
 
 /* Styles */
+/* Universal wrapper */
   .h-wrapper {
     height: 100vh;
     overflow-y: auto;
@@ -135,7 +136,7 @@
     z-index: -1;
   }
 
-/*  */
+/* Results section */
 .results{
   background: linear-gradient(#8eaec5, #d4dde2);
   background: radial-gradient(circle at center,#d4dde2, #8eaec5 100%);  
@@ -158,8 +159,6 @@
     transition: all 0.4s ease-in-out;
   }
   .btn-qa button:hover {
-    cursor: pointer;
-
     border: none;
     box-shadow: #5d99a0 0 0 15px;
     transform: translateY(-2px);
