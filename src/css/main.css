@@ -337,6 +337,8 @@ a{
   .chosen-date{
     font-family: 'Montserrat', sans-serif;
     font-size: 1.2rem;
+    color: var(--gray-text);
+    border: none;
   } 
 
   .switch-div{
