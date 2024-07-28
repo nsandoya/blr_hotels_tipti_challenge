@@ -40,6 +40,7 @@
 
   :root{
     --gray-text: #535353;
+    --medium-gray: #8d8c8c;
     --pale-gray: #b8b6b6;
     --white: #faf5ee;
     --green: #88bb6c;
@@ -48,10 +49,14 @@
     --bone: #f4ede5;
     --blue: #94b9ff;
     --pale-blue: #dde6fd;
+
+    --lakewood: "./src/assets/img/lakewood.jpeg";
+    --bridgewood: "./src/assets/img/bridgewood.jpeg";
+    --ridgewood: "./src/assets/img/ridgewood.jpeg"
   }
 
   /* Buttons */
-  .btn{
+.btn{
     border: none;
     text-align: center;
 
@@ -64,6 +69,20 @@
     font-weight: bolder;
   }
 
+.btn-modify, .btn-confirm{
+    width: 130px;
+    font-size: 1rem;
+    padding: 0.8rem;
+}
+.btn-modify{
+    background-color: var(--pale-blue);
+    color: var(--blue);
+}
+
+.btn-confirm{
+    background-color: var(--green);
+    color: var(--white);
+}
 
   /* Fonts */
   h1{
@@ -74,7 +93,8 @@
     margin-bottom: 1rem;
   }
 
-  .booking{
+  /* Containers and Cards */
+.booking{
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
@@ -87,24 +107,182 @@
         }
   }
 
-  .booking-choices{
+.base-cards{
+    width: 900px;
+    max-width: 1000px;
+    background-color: var(--white);
+    border-radius: 20px;
+
     font-family: 'Raleway', sans-serif;
     color: var(--gray-text);
-    box-shadow: var(--pale-blue) 0 0 50px;
+    text-align: center;
+}
+
+/* Booking section */
+.booking-data{
+    height: 180px;
+    max-height: 200px;
+
+    display: grid;
+    grid-template-columns: repeat(6fr, 2);
+
+    .rewards{
+        .card-subtitle{
+            margin-bottom: 0.8rem;
+        }
+    }
+}
+/* Results section */
+.results{
+  /* background: linear-gradient(#8eaec5, #d4dde2); */
+  background: radial-gradient(circle at center, var(--pale-blue), var(--blue) 100%);  
+
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+
+  padding-top: 1rem;
+  
+  h3{
+    font-family: 'Raleway', sans-serif;
     text-align: center;
 
+    padding: 2rem;
+  }
+
+  .main-card{
+    display: grid;
+    grid-template-columns: 65% 35%;
+
+    .left{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        
+        .hotel {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, 1fr);
+            height: 80%;
+
+            text-align: left;
+            margin-left: 1rem;
+
+            .hotel-name{
+                font-family: 'Arapey', serif;
+                font-style: italic;
+                font-size: 3.5rem;
+            }
+
+            .total {
+                h5{
+                    font-size: 2rem;
+                }
+                h6{
+                    font-size: 0.8rem;
+                    text-transform: uppercase;
+                    color: var(--medium-gray);
+                }
+            }
+        }
+        img{
+            width: 250px;
+            max-width: 250px;
+            border-radius: 10px;
+            
+            margin: 1rem;
+            margin-left: 2rem;
+        }
+    }
+
+    .right{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 60% 40%;
+
+        align-items: center;
+        text-align: left;
+        
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr;
+            align-self: start;
+            .btn{
+                margin-left: 1fr;
+                margin-left: 0 !important
+            }
+        }
+        .dates-div{
+            display: grid;
+            grid-template-columns: 1fr !important;
+            grid-template-rows: repeat(2, 1fr);
+            grid-gap: 1rem;
+
+            margin-top:1rem;
+            
+            /* align-self:end; */
+
+            .date-details{
+                border-left: solid 3px var(--pale-gray);
+                padding-left: 1rem;
+            }
+        }
+    }
+  }
+}
+
+.detail-label{
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        color: var(--medium-gray);
+        font-weight: bolder;
+}
+
+.money{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.booking-choices{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
-
+    
     align-items: center;
     padding: 2rem;
+    
+    box-shadow: var(--pale-blue) 0 0 50px;
 
-    h4{
-        margin-bottom: 0.8rem;
-    }
     span, p{
         font-size: 1.2rem;
+    }
+  }
+
+  .booking-results{
+    .detail-options-card{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+        
+        align-items: center;
+        padding: 2rem;
+        margin-bottom: 1.2rem;
+        
+        background-color: var(--white);
+        /* box-shadow: var(--pale-blue) 0 0 50px; */
+
+        .other-prices{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr 3cqmax;
+
+            text-align: left;
+        }
+    }
+    
+    h3{
+        font-size: 2rem;
+        color: var(--white)
     }
   }
 
@@ -118,6 +296,7 @@
 
   .chosen-date{
     font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
   } 
 
   .switch-div{
@@ -227,23 +406,7 @@
     z-index: -1;
   }
 
-/* Booking section */
-.booking-data{
-    width: 900px;
-    max-width: 1000px;
-    height: 180px;
-    max-height: 200px;
-    background-color: var(--white);
-    border-radius: 20px;
 
-    display: grid;
-    grid-template-columns: repeat(6fr, 2);
-}
-/* Results section */
-.results{
-  /* background: linear-gradient(#8eaec5, #d4dde2); */
-  background: radial-gradient(circle at center, var(--pale-blue), var(--blue) 100%);  
-}
 
 /* QA Button */
   .btn-qa {

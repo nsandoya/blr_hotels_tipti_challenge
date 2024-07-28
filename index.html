@@ -13,7 +13,7 @@
             <img src="./src/assets/img/home_irene_hojas_1920x1080_3.webp" class="foreground d-none d-xl-block">
             <div class="booking">
                 <h1>Estadía</h1>
-                <div class="booking-data">
+                <div class="base-cards booking-data">
                     <div class="booking-choices">
                         <div class="where">
                             <h4 class="card-subtitle">¿Dónde?</h4>
@@ -54,40 +54,44 @@
     
         <div class="results" id="results">
             <div class="booking-results">
-                <h3>Hotel Recomendado</h3>
-                <div class="main-card">
-                    <div class="right">
+                <h3>Hotel Recomendado</h3> 
+                <div class="base-cards  main-card">
+                    <div class="left">
                         <div class="img">
-                            <img src="" alt="">
+                            <img src="./src/assets/img/bridgewood.JPG" alt="">
                         </div>
                         <div class="hotel">
                             <h4 class="hotel-name">Hotel</h4>
                             <div class="stars">***</div>
-                            <span>Total a pagar</span>
-                            <h5><span>$</span>00.00</h5>
+                            <div class="total">
+                                <h6 class="detail-label"> Total a pagar</h6>
+                                <h5 class="money"><span>$</span>00.00</h5>
+
+                            </div>
                         </div>
                     </div>
     
-                    <div class="left">
-                        <div class="dates">
+                    <div class="right">
+                        <div class="dates-div">
                             <div class="date-details">
-                                <span>Fecha de Entrada</span>
+                                <span class="detail-label">Fecha de Entrada</span>
                                 <p class="chosen-date">28/07/2024</p>
                             </div>
                             <div class="date-details">
-                                <span>Fecha de Salida</span>
+                                <span class="detail-label">Fecha de Salida</span>
                                 <p class="chosen-date">28/07/2024</p>
                             </div>
                         </div>
                         <div class="buttons">
                             <div class="btn btn-modify">Modificar</div>
                             <div class="btn btn-confirm">Confirmar</div>
+                            <div></div>
                         </div>
                     </div>
                 </div>
                 <div class="other-options">
                     <h3>Otras opciones</h3>
-                    <div class="detail-options-card">
+                    <div class="base-cards detail-options-card">
                         <div>
                             <h4 class="hotel-name">Hotel</h4>
                             <div class="stars">***</div>
@@ -96,13 +100,13 @@
                             <div>
                                 <span>Tarifa Regular</span>
                             </div>
-                            <div>
+                            <div class="other-prices">
                                 <div>
-                                    <span>Entre Semana</span>
-                                    <h5><span>$</span>00.00</h5>
+                                    <span class="detail-label">Entre Semana</span>
+                                    <h5 class="money"><span>$</span>00.00</h5>
                                 </div>
                                 <div>
-                                    <span>Entre Semana</span>
+                                    <span class="detail-label">Fin de Semana</span>
                                     <h5><span>$</span>00.00</h5>
                                 </div>
                             </div>
@@ -111,14 +115,51 @@
                             <div>
                                 <span>Programa de Recompensas</span>
                             </div>
+                            <div class="other-prices">
+                                <div>
+                                    <span class="detail-label">Entre Semana</span>
+                                    <h5 class="money"><span>$</span>00.00</h5>
+                                </div>
+                                <div>
+                                    <span class="detail-label">Entre Semana</span>
+                                    <h5 class="money"><span>$</span>00.00</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="base-cards detail-options-card">
+                        <div>
+                            <h4 class="hotel-name">Hotel</h4>
+                            <div class="stars">***</div>
+                        </div>
+                        <div class="prices-section">
                             <div>
+                                <span>Tarifa Regular</span>
+                            </div>
+                            <div class="other-prices">
                                 <div>
                                     <span>Entre Semana</span>
-                                    <h5><span>$</span>00.00</h5>
+                                    <h5 class="money"><span>$</span>00.00</h5>
+                                </div>
+                                <div>
+                                    <span>Fin de Semana</span>
+                                    <h5 class="money"><span>$</span>00.00</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prices-section">
+                            <div>
+                                <span>Programa de Recompensas</span>
+                            </div>
+                            <div class="other-prices">
+                                <div>
+                                    <span>Entre Semana</span>
+                                    <h5 class="money"><span>$</span>00.00</h5>
                                 </div>
                                 <div>
                                     <span>Entre Semana</span>
-                                    <h5><span>$</span>00.00</h5>
+                                    <h5 class="money"><span>$</span>00.00</h5>
                                 </div>
                             </div>
                         </div>
@@ -126,45 +167,7 @@
                 </div>
             </div>
     
-            <div class="other-options">
-                <h3>Otras opciones</h3>
-                <div class="detail-options-card">
-                    <div>
-                        <h4 class="hotel-name">Hotel</h4>
-                        <div class="stars">***</div>
-                    </div>
-                    <div class="prices-section">
-                        <div>
-                            <span>Tarifa Regular</span>
-                        </div>
-                        <div>
-                            <div>
-                                <span>Entre Semana</span>
-                                <h5><span>$</span>00.00</h5>
-                            </div>
-                            <div>
-                                <span>Entre Semana</span>
-                                <h5><span>$</span>00.00</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="prices-section">
-                        <div>
-                            <span>Programa de Recompensas</span>
-                        </div>
-                        <div>
-                            <div>
-                                <span>Entre Semana</span>
-                                <h5><span>$</span>00.00</h5>
-                            </div>
-                            <div>
-                                <span>Entre Semana</span>
-                                <h5><span>$</span>00.00</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
 
         
