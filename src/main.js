@@ -11,6 +11,7 @@ const hotels = [
         id: 1,
         name: "Lakewood",
         stars: 3,
+        url: "./src/assets/img/lakewood.jpeg",
         prices: [
             { regularPrices: { weekdays: 110, weekend: 90 } },
             { reward_prices: { weekdays: 80, weekend: 80 } }
@@ -20,6 +21,7 @@ const hotels = [
         id: 2,
         name: "Bridgewood",
         stars: 4,
+        url: "./src/assets/img/bridgewood.jpg",
         prices: [
             { regularPrices: { weekdays: 160, weekend: 60 } },
             { reward_prices: { weekdays: 110, weekend: 50 } }
@@ -28,6 +30,7 @@ const hotels = [
     {
         id: 3,
         name: "Ridgewood",
+        url: "./src/assets/img/ridgewood.jpg",
         stars: 5,
         prices: [
             { regularPrices: { weekdays: 220, weekend: 150 } },
@@ -185,6 +188,7 @@ function calculatePrices(hotels, isReward) {
             hotelsTotalPrices.push({
                 hotel: hotel.name,
                 stars: hotel.stars,
+                url: hotel.url,
                 totalPrice: clientWeekdaysPrice + clientWeekendPrice,
                 
             });
@@ -204,10 +208,13 @@ function calculateStars(stars){
     return ranking
 }
 
+
 function setFinalResults(finalResults, minPrice){
     let recHotelName = document.getElementById('recomended-hotel-name');
     let recHotelStars = document.getElementById('recomended-hotel-stars');
     let recHotelPrice = document.getElementById('recomended-hotel-price');
+
+    let recHotelImage = document.querySelector(".img")
 
     if(finalResults.length > 1){
         let stars = finalResults.map(hotel => hotel.stars);
@@ -219,6 +226,7 @@ function setFinalResults(finalResults, minPrice){
     recHotelName.innerText = finalResults[0].hotel;
     recHotelStars.textContent = calculateStars(finalResults[0].stars)
     recHotelPrice.innerText = `$ ${minPrice.toFixed(2)}`
+    recHotelImage.innerHTML = `<img src="${finalResults[0].url}" alt=""></img>`
 }
 
 document.addEventListener('DOMContentLoaded', () => {
