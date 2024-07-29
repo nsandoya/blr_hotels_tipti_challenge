@@ -1,151 +1,158 @@
-/* import getHotels from "./services/getHotels" */
-/* import {hotels} from "./database/hotels" */
-/* import {scanDayByDay} from "./tools/scanDaybyDay" */
+class Client {
+    constructor({ isAfiliate, weekdaysPrices, weekendPrices }) {
+        this.isAfiliate = isAfiliate;
+        this.weekdaysPrices = weekdaysPrices;
+        this.weekendPrices = weekendPrices;
+    }
+}
 
-/* window.addEventListener('load', async () => {
-    const hotels = await getHotels();
-    console.log(hotels);
-}); */
-
-/* export const prueba = async () => {
-    const hotels = await getHotels();
-    console.log(hotels);
-} */
 const hotels = [
-        [
-            {
-                id: 1,
-                name: "Lakewood",
-                stars: 3,
-                prices:[
-                    { regular_prices: 
-                        {
-                            weekdays: 110,
-                            weekend: 90
-                        }
-                    },
-                    { reward_prices: 
-                        {
-                            weekdays: 80,
-                            weekend: 80
-                        } 
-                    }
-                ]
-            },
-            {
-                id: 2,
-                name: "Bridgewood",
-                stars: 4,
-                prices:[
-                    { regular_prices: 
-                        {
-                            weekdays: 160,
-                            weekend: 60
-                        }
-                    },
-                    { reward_prices: 
-                        {
-                            weekdays: 110,
-                            weekend: 50
-                        } 
-                    }
-                ]
-            },
-            {
-                id: 3,
-                name: "Ridgewood",
-                stars: 5,
-                prices:[
-                { regular_prices: 
-                        {
-                            weekdays: 220,
-                            weekend: 150
-                        }
-                    },
-                    { reward_prices: 
-                        {
-                            weekdays: 100,
-                            weekend: 40
-                        } 
-                    }
-                ]
-            }
-        ] 
-    ]
-let checkboxValue = false
+    {
+        id: 1,
+        name: "Lakewood",
+        stars: 3,
+        prices: [
+            { regularPrices: { weekdays: 110, weekend: 90 } },
+            { reward_prices: { weekdays: 80, weekend: 80 } }
+        ]
+    },
+    {
+        id: 2,
+        name: "Bridgewood",
+        stars: 4,
+        prices: [
+            { regularPrices: { weekdays: 160, weekend: 60 } },
+            { reward_prices: { weekdays: 110, weekend: 50 } }
+        ]
+    },
+    {
+        id: 3,
+        name: "Ridgewood",
+        stars: 5,
+        prices: [
+            { regularPrices: { weekdays: 220, weekend: 150 } },
+            { reward_prices: { weekdays: 100, weekend: 40 } }
+        ]
+    }
+];
 
-function isAfiliate(){
+let checkboxValue = false;
+
+function seeCheaperHotel(hotels) {
+    let seeCheaperHotelBtn = document.querySelector(".see-results");
+    seeCheaperHotelBtn.addEventListener('click', () => calculatePrices(hotels, checkboxValue));
+}
+
+function isAfiliate() {
     let checkboxElement = document.querySelector(".checkbox");
-    checkboxElement.addEventListener('click', () => {
-        if (checkboxElement.checked) {
-            checkboxValue = true
-            console.log('El checkbox está marcado', checkboxValue);
-            // Aquí puedes llamar a la función que deseas ejecutar
-        } else {
-            checkboxValue = false;
-            console.log('El checkbox no está marcado', checkboxValue);
-            // Aquí puedes realizar otras acciones si es necesario
-        }
+    checkboxElement.addEventListener('change', () => {
+        checkboxValue = checkboxElement.checked;
+        console.log('El checkbox está', checkboxValue ? 'marcado' : 'no marcado');
     });
 }
 
 function scanDayByDay() {
-    // Obtener las fechas de inicio y fin del input
     const firstDayInput = document.getElementById('firstDay').value;
     const lastDayInput = document.getElementById('lastDay').value;
-    
-    // Verificar si se han seleccionado ambas fechas
+
     if (!firstDayInput || !lastDayInput) {
         alert("Por favor, elige ambas fechas.");
-        return;
+        return [];
     }
 
-    // Convertir las fechas del input a objetos Date
     const firstDay = new Date(firstDayInput);
     const lastDay = new Date(lastDayInput);
-    
-    // Verificar que la fecha de inicio sea menor o igual a la fecha de fin
+
     if (firstDay > lastDay) {
         alert("La fecha de inicio debe ser anterior o igual a la fecha de fin.");
-        return;
+        return [];
     }
 
-    // Crear un array para almacenar los results
     const results = [];
-    
-    
-    // Iterar sobre cada día en el rango
     let currentDate = firstDay;
+
     while (currentDate <= lastDay) {
         const weekDay = currentDate.getDay();
-        const isWeekend = (weekDay === 6 || weekDay === 5);
-    
+        const isWeekend = (weekDay === 6 || weekDay === 0);
+
         results.push({
             date: currentDate.toISOString().split('T')[0],
-            type: isWeekend ? 'weekend': 'weekday'
+            type: isWeekend ? 'weekend' : 'weekday'
         });
-        
-        // Avanzar al siguiente día
+
         currentDate.setDate(currentDate.getDate() + 1);
     }
-    return results
+
+    return results;
 }
 
-function calculatePrices(){
-    let totalWeekends = 0
-    let totalWeekDays = 0
-    //console.log(hotels)
-    let clientWeek = scanDayByDay()
-    console.log("client week", clientWeek)
+function hotelPrices(hotel, weekdays, weekend, isReward) {
+    let prices = hotel.prices;
 
-    for (i = 0; i < clientWeek.length; i++){
-        clientWeek[i]["type"] == "weekend" ? totalWeekends += 1 : totalWeekDays += 1
-        console.log(clientWeek[i]["type"])
+    let regularPrices = prices[0].regularPrices;
+    let rewardPrices = prices[1].reward_prices;
+
+    let regWeekdaysPrices = regularPrices.weekdays;
+    let regWeekendPrices = regularPrices.weekend;
+
+    let rewWeekdaysPrices = rewardPrices.weekdays;
+    let rewWeekendPrices = rewardPrices.weekend;
+
+    let regTotalWeekdaysPrices = weekdays * regWeekdaysPrices;
+    let regTotalWeekendPrices = weekend * regWeekendPrices;
+
+    let rewTotalWeekdaysPrices = weekdays * rewWeekdaysPrices;
+    let rewTotalWeekendPrices = weekend * rewWeekendPrices;
+
+    if (isReward) {
+        return [rewTotalWeekdaysPrices, rewTotalWeekendPrices];
+    } else {
+        return [regTotalWeekdaysPrices, regTotalWeekendPrices];
     }
-    console.log("cuenta de tipos de días",totalWeekDays, totalWeekends)
-    
 }
 
+function getHotelsNames(hotels) {
+    return hotels.map(hotel => hotel.name);
+}
 
-isAfiliate()
+function getHotels(hotels) {
+    return hotels;
+}
 
+function calculatePrices(hotels, isReward) {
+    let totalWeekend = 0;
+    let totalWeekDays = 0;
+
+    let hotelsNames = getHotelsNames(hotels);
+    let hotelsList = getHotels(hotels);
+
+    let hotelsTotalPrices = [];
+    let clientWeek = scanDayByDay();
+
+    if (clientWeek.length > 0) {
+        clientWeek.forEach(day => {
+            if (day.type === "weekend") {
+                totalWeekend += 1;
+            } else {
+                totalWeekDays += 1;
+            }
+        });
+
+        hotelsList.forEach(hotel => {
+            let [clientWeekdaysPrice, clientWeekendPrice] = hotelPrices(hotel, totalWeekDays, totalWeekend, isReward);
+
+            hotelsTotalPrices.push({
+                hotel: hotel.name,
+                totalPrice: clientWeekdaysPrice + clientWeekendPrice
+            });
+        });
+
+        console.log("costos finales", hotelsTotalPrices);
+        return hotelsTotalPrices;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    isAfiliate();
+    seeCheaperHotel(hotels);
+});
