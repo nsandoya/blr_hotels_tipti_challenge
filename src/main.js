@@ -38,9 +38,35 @@ const hotels = [
 
 let checkboxValue = false;
 
+function calculateMinPrice(finalResults){
+    if (!finalResults || finalResults.length === 0) {
+        return 0;
+    }
+
+    let prices = []
+    prices = finalResults.map(hotel => hotel.totalPrice);
+    let minPrice = Math.min(...prices);
+    
+    return minPrice;
+}
+
 function seeCheaperHotel(hotels) {
+    //let finalResults
     let seeCheaperHotelBtn = document.querySelector(".see-results");
-    seeCheaperHotelBtn.addEventListener('click', () => calculatePrices(hotels, checkboxValue));
+    seeCheaperHotelBtn.addEventListener('click', () => {
+        // Calcular precios de cada hotel, por cada tipo de cliente (regular y afiliado)
+        let finalResults = calculatePrices(hotels, checkboxValue);
+        
+        // Calcular el precio mínimo
+        let minPrice = calculateMinPrice(finalResults);
+        let hotel = finalResults.filter(hotel => hotel.totalPrice === minPrice);
+        console.log("hotel más barato", hotel)
+        console.log(minPrice)
+        
+        // Atualizar la interfaz de usuario
+        setFinalResults(hotel, minPrice);
+
+    })
 }
 
 function isAfiliate() {
@@ -49,6 +75,17 @@ function isAfiliate() {
         checkboxValue = checkboxElement.checked;
         console.log('El checkbox está', checkboxValue ? 'marcado' : 'no marcado');
     });
+}
+
+function setDates(firstDate, lastDate){
+    const firstDateElement = document.querySelector('#check-in');
+    const lastDateElement = document.querySelector('#check-out')
+
+    
+    firstDateElement.innerText = firstDate
+    lastDateElement.innerText = lastDate
+
+    console.log(firstDate, lastDate)
 }
 
 function scanDayByDay() {
@@ -60,8 +97,12 @@ function scanDayByDay() {
         return [];
     }
 
-    const firstDay = new Date(firstDayInput);
-    const lastDay = new Date(lastDayInput);
+    const firstDay = new Date(firstDayInput + 'T00:00:00');
+    const lastDay = new Date(lastDayInput + 'T00:00:00');
+
+    setDates(firstDay.toDateString(), lastDay.toDateString())
+
+    console.log("fechas a calcular", firstDay, lastDay)
 
     if (firstDay > lastDay) {
         alert("La fecha de inicio debe ser anterior o igual a la fecha de fin.");
@@ -143,13 +184,34 @@ function calculatePrices(hotels, isReward) {
 
             hotelsTotalPrices.push({
                 hotel: hotel.name,
-                totalPrice: clientWeekdaysPrice + clientWeekendPrice
+                stars: hotel.stars,
+                totalPrice: clientWeekdaysPrice + clientWeekendPrice,
+                
             });
         });
 
         console.log("costos finales", hotelsTotalPrices);
         return hotelsTotalPrices;
     }
+}
+
+function setFinalResults(finalResults, minPrice){
+    let recHotelName = document.getElementById('recomended-hotel-name');
+    let recHotelStars = document.getElementById('recomended-hotel-stars').innerText;
+    let recHotelPrice = document.getElementById('recomended-hotel-price');
+
+    if(finalResults.length > 1){
+        let stars = finalResults.map(hotel => hotel.stars);
+        let mostRanked = Math.min(...stars);
+        let firstOption = finalResults.filter((hotel) => hotel.stars == mostRanked)
+        recHotelName.innerText = firstOption.hotel;
+    }
+
+    /* console.log("setFinalResults llegó primero")
+    console.log(finalResults, "lo que llega") */
+    
+    recHotelName.innerText = finalResults[0].hotel;
+    recHotelPrice.innerText = `$ ${minPrice.toFixed(2)}`
 }
 
 document.addEventListener('DOMContentLoaded', () => {
