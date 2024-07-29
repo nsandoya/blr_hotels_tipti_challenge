@@ -12,30 +12,30 @@ const hotels = [
         name: "Lakewood",
         stars: 3,
         url: "./src/assets/img/lakewood.jpeg",
-        prices: [
-            { regularPrices: { weekdays: 110, weekend: 90 } },
-            { reward_prices: { weekdays: 80, weekend: 80 } }
-        ]
+        prices: {
+            regularPrices: { weekdays: 110, weekend: 90 } ,
+            reward_prices: { weekdays: 80, weekend: 80  }
+        }
     },
     {
         id: 2,
         name: "Bridgewood",
         stars: 4,
         url: "./src/assets/img/bridgewood.jpg",
-        prices: [
-            { regularPrices: { weekdays: 160, weekend: 60 } },
-            { reward_prices: { weekdays: 110, weekend: 50 } }
-        ]
+        prices: {
+            regularPrices: { weekdays: 160, weekend: 60 },
+            reward_prices: { weekdays: 110, weekend: 50 }
+        }
     },
     {
         id: 3,
         name: "Ridgewood",
         url: "./src/assets/img/ridgewood.jpg",
         stars: 5,
-        prices: [
-            { regularPrices: { weekdays: 220, weekend: 150 } },
-            { reward_prices: { weekdays: 100, weekend: 40 } }
-        ]
+        prices: {
+            regularPrices: { weekdays: 220, weekend: 150 },
+            reward_prices: { weekdays: 100, weekend: 40 }
+        }
     }
 ];
 
@@ -138,8 +138,8 @@ function scanDayByDay() {
 function hotelPrices(hotel, weekdays, weekend, isReward) {
     let prices = hotel.prices;
 
-    let regularPrices = prices[0].regularPrices;
-    let rewardPrices = prices[1].reward_prices;
+    let regularPrices = prices.regularPrices;
+    let rewardPrices = prices.reward_prices;
 
     let regWeekdaysPrices = regularPrices.weekdays;
     let regWeekendPrices = regularPrices.weekend;
@@ -210,7 +210,7 @@ function calculateStars(stars){
     for (i=0; i< stars; i++){
         ranking += "★"
     }
-    console.log(ranking)
+    //console.log(ranking)
     return ranking
 }
 
@@ -243,6 +243,13 @@ function setPriceDetails(sortedList){
     priceDetails.innerHTML = `<h3>Price Detail</h3>`
     
     for(i=0; i < sortedList.length; i++){
+        let prices = sortedList[i].prices
+        /* let new_prices = {...prices}
+        let reg_prices = {...new_prices} */
+        console.log(prices)
+        
+        //console.log(prices[0])
+        //console.log(prices[1])
         
         priceDetails.innerHTML += `<div class="base-cards detail-options-card">
                         <div>
@@ -256,11 +263,11 @@ function setPriceDetails(sortedList){
                             <div class="other-prices">
                                 <div>
                                     <span class="detail-label">Entre Semana</span>
-                                    <h5 class="money"><span>$${sortedList[i].prices[0].regular_prices}</h5>
+                                    <h5 class="money"><span>$ ${prices.regularPrices.weekdays.toFixed(2)}</h5>
                                 </div>
                                 <div>
                                     <span class="detail-label">Fin de Semana</span>
-                                    <h5 class="money"><span>$</span>00.00</h5>
+                                    <h5 class="money"><span>$ ${prices.regularPrices.weekend.toFixed(2)}</span></h5>
                                 </div>
                             </div>
                         </div>
@@ -271,11 +278,11 @@ function setPriceDetails(sortedList){
                             <div class="other-prices">
                                 <div>
                                     <span class="detail-label">Entre Semana</span>
-                                    <h5 class="money"><span>$</span>00.00</h5>
+                                    <h5 class="money"><span>$ ${prices.reward_prices.weekdays.toFixed(2)}</span></h5>
                                 </div>
                                 <div>
-                                    <span class="detail-label">Entre Semana</span>
-                                    <h5 class="money"><span>$</span>00.00</h5>
+                                    <span class="detail-label">Fin de Semana</span>
+                                    <h5 class="money"><span>$ ${prices.reward_prices.weekend.toFixed(2)}</span></h5>
                                 </div>
                             </div>
                         </div>
