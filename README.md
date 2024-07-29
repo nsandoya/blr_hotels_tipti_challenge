@@ -38,7 +38,7 @@ Pensé adecuado diseñar una herramienta de *pre check-in* sencilla y concreta, 
 
 En esta fase, plasmé en maquetas mis ideas sobre cómo debería ser la UI del sitio web.
 
-🐥 Puedes ver la maqueta definitiva aquí: 
+🐥 Puedes ver la maqueta definitiva aquí: https://github.com/nsandoya/blr_hotels_tipti_challenge/blob/main/src/assets/prototipe/blr_hotels_challenge.pdf
 
 Después de escoger los diseños definitivos, desarrollé el sitio web usando HTML, CSS y JavaScript. Usé un enfoque funcional: muchas piezas (funciones) van componiendo procesos cada vez más grandes para cumplir el objetivo: sugerir al usuario cuál es la opción más asequible según sus necesidades, ayudándolo así a planificar su viaje.
 
@@ -47,9 +47,12 @@ Después de escoger los diseños definitivos, desarrollé el sitio web usando HT
 A lo largo del proceso de desarrollo, se realizaron varias pruebas técnicas y de usabilidad con el fin de evaluar el funcionamiento del sitio web, tanto a nivel funcional como de experiencia de usuario.
 
 ## Instrucciones: Cómo ejecutar la aplicación
+🤖 **Despliegue**
+- El sitio web de BLR cuenta con procesos internos que no requieren conectarse a una DDBB en la nube ni inicializar un servidor —el website ha sido desplegado en `GitHub Pages`: https://nsandoya.github.io/blr_hotels_tipti_challenge/
 
-El sitio web de BLR cuenta con procesos internos que no requieren conectarse a una DDBB en la nube ni inicializar un servidor —el website ha sido desplegado en `GitHub Pages`: https://nsandoya.github.io/blr_hotels_tipti_challenge/
+- Además del sitio online, es posible descargar el fichero y probarlo localmente, usando `Live Server` u otros servicios similares. Para descargar el fichero en tu PC, puedes descargarlo en formato `.zip` dirigiéndote al botón `Code → Download ZIP`, en la página principal del repositorio del proyecto.
 
-Además del sitio online, es posible descargar el fichero y probarlo localmente, usando `Live Server` u otros servicios similares. Para descargar el fichero en tu PC, puedes descargarlo en formato `.zip` dirigiéndote al botón `Code → Download ZIP`, en la página principal del repositorio del proyecto.
-
-Al entrar al sitio web, solo será necesario ingresar las fechas de check-in y check-out, definir el status de afiliación, y dar click en el botón `Consultar`. Si los campos están completos, se descubrirá una nueva sección donde se podrán visualizar los resultados de la consulta 🙂 —es posible repetir esta operación las veces que sea necesario.
+👩🏻‍💻 **Cómo funciona**
+Al entrar al sitio web, solo serán necesarios dos pasos:
+1. Ingresar las fechas de check-in y check-out, definir el status de afiliación
+2. Dar click en el botón `Consultar`. Si los campos están completos, se descubrirá una nueva sección donde se podrán visualizar los resultados de la consulta 🙂 —es posible repetir esta operación las veces que sea necesario.
