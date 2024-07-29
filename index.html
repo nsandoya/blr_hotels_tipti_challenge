@@ -23,19 +23,19 @@
                     </div>
                     <div class="date">
                         <h4 class="card-subtitle">Fecha de llegada</h4>
-                        <input type="date" class="chosen-date" id="fecha" name="fecha">
+                        <input type="date" class="chosen-date" id="firstDay" name="fecha">
                         <!-- <p class="chosen-date">28/07/2024</span> -->
                     </div>
                     <div class="date">
                         <h4 class="card-subtitle">Fecha de salida</h4>
-                        <input type="date" class="chosen-date" id="fecha" name="fecha">
+                        <input type="date" class="chosen-date" id="lastDay" name="fecha">
                     </div>
                     <div class="rewards">
-                        <h4 class="card-subtitle">¿Programa de Recompensas?</h4>
+                        <h4 class="card-subtitle">¿Suscrito?</h4>
                         <div class="switch-div">
                             <span>No</span>
                             <label class="switch">
-                                <input type="checkbox">
+                                <input type="checkbox" class="checkbox">
                                 <span class="slider round"></span>
                             </label>
                             <span>Sí</span>
@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div><button class="btn see-results"><a href="#results">Consultar</a></button></div>
+            <div><button class="btn see-results" onclick="calculatePrices()"><a href="#results">Consultar</a></button></div>
             <div class="hotel-details">
 
             </div>
@@ -177,5 +177,8 @@
     <aside class="btn-qa">
         <button>?</button>
     </aside>
+
+   <!--  <script type="module" src="./src/main.js""></script> -->
+     <script  src="src/main.js"></script>
 </body>
 </html>

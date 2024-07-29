@@ -132,8 +132,12 @@
     .card-subtitle{
         margin-bottom: 0.8rem;
     }
-    /* .rewards{
-    } */
+    .rewards{
+        justify-self: center;
+        label{
+            margin: 0 0.7rem
+        }
+    }
 }
 /* Results section */
 .results{
