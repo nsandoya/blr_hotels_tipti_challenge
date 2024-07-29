@@ -207,7 +207,7 @@ function calculatePrices(hotels, isReward) {
 
 function calculateStars(stars){
     let ranking = ""
-    for (i=0; i< stars; i++){
+    for (n=0; n< stars; n++){
         ranking += "★"
     }
     //console.log(ranking)
@@ -244,17 +244,18 @@ function setPriceDetails(sortedList){
     
     for(i=0; i < sortedList.length; i++){
         let prices = sortedList[i].prices
-        /* let new_prices = {...prices}
-        let reg_prices = {...new_prices} */
         console.log(prices)
-        
-        //console.log(prices[0])
-        //console.log(prices[1])
+
+        let stars = sortedList[i].stars
+        let starsToShow = calculateStars(stars)
         
         priceDetails.innerHTML += `<div class="base-cards detail-options-card">
                         <div>
                             <h4 class="hotel-name">${sortedList[i].hotel}</h4>
-                            <div class="stars">***</div>
+                            <div class="other-prices">
+                                <div class="stars">${starsToShow}</div>
+                                <div class="money-light"> $ ${sortedList[i].totalPrice.toFixed(2)}</div>
+                            </div>
                         </div>
                         <div class="prices-section">
                             <div>
