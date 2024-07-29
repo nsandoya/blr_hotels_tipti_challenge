@@ -195,9 +195,18 @@ function calculatePrices(hotels, isReward) {
     }
 }
 
+function calculateStars(stars){
+    let ranking = ""
+    for (i=0; i< stars; i++){
+        ranking += "★"
+    }
+    console.log(ranking)
+    return ranking
+}
+
 function setFinalResults(finalResults, minPrice){
     let recHotelName = document.getElementById('recomended-hotel-name');
-    let recHotelStars = document.getElementById('recomended-hotel-stars').innerText;
+    let recHotelStars = document.getElementById('recomended-hotel-stars');
     let recHotelPrice = document.getElementById('recomended-hotel-price');
 
     if(finalResults.length > 1){
@@ -206,11 +215,9 @@ function setFinalResults(finalResults, minPrice){
         let firstOption = finalResults.filter((hotel) => hotel.stars == mostRanked)
         recHotelName.innerText = firstOption.hotel;
     }
-
-    /* console.log("setFinalResults llegó primero")
-    console.log(finalResults, "lo que llega") */
     
     recHotelName.innerText = finalResults[0].hotel;
+    recHotelStars.textContent = calculateStars(finalResults[0].stars)
     recHotelPrice.innerText = `$ ${minPrice.toFixed(2)}`
 }
 

@@ -182,7 +182,12 @@
             .hotel-name{
                 font-family: 'Arapey', serif;
                 font-style: italic;
-                font-size: 3.5rem;
+                font-size: 3rem;
+            }
+
+            #recomended-hotel-stars{
+                font-size: 2rem;
+                color: var(--gold);
             }
 
             .total {
