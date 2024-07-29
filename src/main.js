@@ -1,10 +1,4 @@
-class Client {
-    constructor({ isAfiliate, weekdaysPrices, weekendPrices }) {
-        this.isAfiliate = isAfiliate;
-        this.weekdaysPrices = weekdaysPrices;
-        this.weekendPrices = weekendPrices;
-    }
-}
+
 
 const hotels = [
     {
@@ -54,25 +48,29 @@ function calculateMinPrice(finalResults){
 }
 
 function seeCheaperHotel(hotels) {
-    //let finalResults
+    let resultsContainer = document.querySelector(".results")
     let seeCheaperHotelBtn = document.querySelector(".see-results");
+
     seeCheaperHotelBtn.addEventListener('click', () => {
-        // Calcular precios de cada hotel, por cada tipo de cliente (regular y afiliado)
+        // Primero, permite la visualización de la sección de resultados
+        // Calcula los precios de cada hotel, por cada tipo de cliente (regular y afiliado)
         let finalResults = calculatePrices(hotels, checkboxValue);
         let hotelsPriceDetailList = []
-        // Calcular el precio mínimo
+        // Calcula el precio mínimo
         let minPrice = calculateMinPrice(finalResults);
+        // A partir del precio total más bajo, busca el hotel más barato y retorna sus datos
         let hotel = finalResults.filter(hotel => hotel.totalPrice === minPrice);
-        console.log("hotel más barato", hotel)
-        console.log(minPrice)
-
-        // Ordenar hoteles por su precio total
-        const ascendentList = [...finalResults].sort((a, b) => a.totalPrice - b.totalPrice);
-        console.log("asc", ascendentList)
-        setPriceDetails(ascendentList)
         
-        // Atualizar la interfaz de usuario
-        setFinalResults(hotel, minPrice);
+        
+        // Ordena los hoteles por su precio total
+        const ascendentList = [...finalResults].sort((a, b) => a.totalPrice - b.totalPrice);
+        
+        if (ascendentList){
+            resultsContainer.classList.remove('hide')
+            setPriceDetails(ascendentList)
+            // Atualiza la interfaz de usuario con los nuevos datos obtenidos
+            setFinalResults(hotel, minPrice);
+        }
 
     })
 }
@@ -81,7 +79,7 @@ function isAfiliate() {
     let checkboxElement = document.querySelector(".checkbox");
     checkboxElement.addEventListener('change', () => {
         checkboxValue = checkboxElement.checked;
-        console.log('El checkbox está', checkboxValue ? 'marcado' : 'no marcado');
+        
     });
 }
 
@@ -93,15 +91,16 @@ function setDates(firstDate, lastDate){
     firstDateElement.innerText = firstDate
     lastDateElement.innerText = lastDate
 
-    console.log(firstDate, lastDate)
+    
 }
 
+// La función extrae los datos de los inputs tipo 'day' y los procesa, verificando además si los días reservados son fin de semana o entre semana (esto influye también en los precios)
 function scanDayByDay() {
     const firstDayInput = document.getElementById('firstDay').value;
     const lastDayInput = document.getElementById('lastDay').value;
 
     if (!firstDayInput || !lastDayInput) {
-        alert("Por favor, elige ambas fechas.");
+        alert("Por favor, tu fecha de entrada y/o salida");
         return [];
     }
 
@@ -110,7 +109,7 @@ function scanDayByDay() {
 
     setDates(firstDay.toDateString(), lastDay.toDateString())
 
-    console.log("fechas a calcular", firstDay, lastDay)
+    
 
     if (firstDay > lastDay) {
         alert("La fecha de inicio debe ser anterior o igual a la fecha de fin.");
@@ -134,7 +133,7 @@ function scanDayByDay() {
 
     return results;
 }
-
+// Calculo puntual de todos los precios de los hoteles
 function hotelPrices(hotel, weekdays, weekend, isReward) {
     let prices = hotel.prices;
 
@@ -168,6 +167,7 @@ function getHotels(hotels) {
     return hotels;
 }
 
+// En esta función convergen algunas de las 'piezas' (funciones más pequeñas) construidas hasta ahora. Buscamos conocer los precios de todos los hoteles, según los datos ingresados por el usuario, y ordenar los hoteles en una lista, en función de ese resultado
 function calculatePrices(hotels, isReward) {
     let totalWeekend = 0;
     let totalWeekDays = 0;
@@ -200,7 +200,7 @@ function calculatePrices(hotels, isReward) {
             });
         });
 
-        console.log("costos finales", hotelsTotalPrices);
+        
         return hotelsTotalPrices;
     }
 }
@@ -210,11 +210,11 @@ function calculateStars(stars){
     for (n=0; n< stars; n++){
         ranking += "★"
     }
-    //console.log(ranking)
+    //
     return ranking
 }
 
-
+// El hotel más asequible se muestra en pantalla gracias a esta función
 function setFinalResults(finalResults, minPrice){
     let recHotelName = document.getElementById('recomended-hotel-name');
     let recHotelStars = document.getElementById('recomended-hotel-stars');
@@ -236,7 +236,7 @@ function setFinalResults(finalResults, minPrice){
 
     
 }
-
+// El detalle de precios de cada hotel se muestra posteriormente, bajo la main card, gracias a esta función
 function setPriceDetails(sortedList){
     let priceDetails = document.querySelector('.other-options');
                     
@@ -244,7 +244,7 @@ function setPriceDetails(sortedList){
     
     for(i=0; i < sortedList.length; i++){
         let prices = sortedList[i].prices
-        console.log(prices)
+        
 
         let stars = sortedList[i].stars
         let starsToShow = calculateStars(stars)
@@ -291,6 +291,7 @@ function setPriceDetails(sortedList){
     }
 }
 
+// Finalmente, todo converge aquí. Las funciones dentro contienen event listeners y event handlers, para trabajar en cuanto el usuario solicite info
 document.addEventListener('DOMContentLoaded', () => {
     isAfiliate();
     seeCheaperHotel(hotels);

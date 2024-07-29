@@ -110,6 +110,7 @@
         }
   }
 
+
 .base-cards{
     width: 900px;
     max-width: 1000px;
@@ -254,6 +255,11 @@
         }
     }
   }
+}
+
+
+.hide{
+    display: none !important;
 }
 
 .detail-label{
