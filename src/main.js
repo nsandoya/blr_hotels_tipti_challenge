@@ -11,7 +11,7 @@ const hotels = [
         id: 1,
         name: "Lakewood",
         stars: 3,
-        url: "./src/assets/img/lakewood.jpeg",
+        url: "https://github.com/nsandoya/blr_hotels_tipti_challenge/blob/main/src/assets/img/lakewood.JPEG?raw=true",
         prices: {
             regularPrices: { weekdays: 110, weekend: 90 } ,
             reward_prices: { weekdays: 80, weekend: 80  }
@@ -21,7 +21,7 @@ const hotels = [
         id: 2,
         name: "Bridgewood",
         stars: 4,
-        url: "./src/assets/img/bridgewood.jpg",
+        url: "https://raw.githubusercontent.com/nsandoya/blr_hotels_tipti_challenge/main/src/assets/img/bridgewood.JPG",
         prices: {
             regularPrices: { weekdays: 160, weekend: 60 },
             reward_prices: { weekdays: 110, weekend: 50 }
@@ -30,7 +30,7 @@ const hotels = [
     {
         id: 3,
         name: "Ridgewood",
-        url: "./src/assets/img/ridgewood.jpg",
+        url: "https://github.com/nsandoya/blr_hotels_tipti_challenge/blob/main/src/assets/img/ridgewood.JPG?raw=true",
         stars: 5,
         prices: {
             regularPrices: { weekdays: 220, weekend: 150 },
