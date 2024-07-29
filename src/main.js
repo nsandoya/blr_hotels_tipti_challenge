@@ -59,7 +59,7 @@ function seeCheaperHotel(hotels) {
     seeCheaperHotelBtn.addEventListener('click', () => {
         // Calcular precios de cada hotel, por cada tipo de cliente (regular y afiliado)
         let finalResults = calculatePrices(hotels, checkboxValue);
-        
+        let hotelsPriceDetailList = []
         // Calcular el precio mínimo
         let minPrice = calculateMinPrice(finalResults);
         let hotel = finalResults.filter(hotel => hotel.totalPrice === minPrice);
@@ -68,7 +68,8 @@ function seeCheaperHotel(hotels) {
 
         // Ordenar hoteles por su precio total
         const ascendentList = [...finalResults].sort((a, b) => a.totalPrice - b.totalPrice);
-        console.log("Lista ascendente",ascendentList)
+        console.log("asc", ascendentList)
+        setPriceDetails(ascendentList)
         
         // Atualizar la interfaz de usuario
         setFinalResults(hotel, minPrice);
@@ -193,6 +194,7 @@ function calculatePrices(hotels, isReward) {
                 hotel: hotel.name,
                 stars: hotel.stars,
                 url: hotel.url,
+                prices: hotel.prices,
                 totalPrice: clientWeekdaysPrice + clientWeekendPrice,
                 
             });
@@ -231,6 +233,54 @@ function setFinalResults(finalResults, minPrice){
     recHotelStars.textContent = calculateStars(finalResults[0].stars)
     recHotelPrice.innerText = `$ ${minPrice.toFixed(2)}`
     recHotelImage.innerHTML = `<img src="${finalResults[0].url}" alt=""></img>`
+
+    
+}
+
+function setPriceDetails(sortedList){
+    let priceDetails = document.querySelector('.other-options');
+                    
+    priceDetails.innerHTML = `<h3>Price Detail</h3>`
+    
+    for(i=0; i < sortedList.length; i++){
+        
+        priceDetails.innerHTML += `<div class="base-cards detail-options-card">
+                        <div>
+                            <h4 class="hotel-name">${sortedList[i].hotel}</h4>
+                            <div class="stars">***</div>
+                        </div>
+                        <div class="prices-section">
+                            <div>
+                                <span class="price-type">Tarifa Regular</span>
+                            </div>
+                            <div class="other-prices">
+                                <div>
+                                    <span class="detail-label">Entre Semana</span>
+                                    <h5 class="money"><span>$${sortedList[i].prices[0].regular_prices}</h5>
+                                </div>
+                                <div>
+                                    <span class="detail-label">Fin de Semana</span>
+                                    <h5 class="money"><span>$</span>00.00</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prices-section">
+                            <div >
+                                <span class="price-type">Programa de Recompensas</span>
+                            </div>
+                            <div class="other-prices">
+                                <div>
+                                    <span class="detail-label">Entre Semana</span>
+                                    <h5 class="money"><span>$</span>00.00</h5>
+                                </div>
+                                <div>
+                                    <span class="detail-label">Entre Semana</span>
+                                    <h5 class="money"><span>$</span>00.00</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
