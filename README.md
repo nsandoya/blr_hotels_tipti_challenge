@@ -40,7 +40,9 @@ En esta fase, plasmé en maquetas mis ideas sobre cómo debería ser la UI del s
 
 🐥 Puedes ver la maqueta definitiva aquí: https://github.com/nsandoya/blr_hotels_tipti_challenge/blob/main/src/assets/prototipe/blr_hotels_challenge.pdf
 
-Después de escoger los diseños definitivos, desarrollé el sitio web usando HTML, CSS y JavaScript. Usé un enfoque funcional: muchas piezas (funciones) van componiendo procesos cada vez más grandes para cumplir el objetivo: sugerir al usuario cuál es la opción más asequible según sus necesidades, ayudándolo así a planificar su viaje.
+Después de escoger los diseños definitivos, desarrollé el sitio web usando HTML, CSS y JavaScript. En esta ocasión, usé un enfoque **funcional**: muchas piezas (funciones) van componiendo procesos cada vez más grandes para cumplir el objetivo: sugerir al usuario cuál es la opción más asequible según sus necesidades, ayudándolo así a planificar su viaje.
+
+`🍃 PD: Originalmente, las funciones estaban pensadas para ser distribuidas en varios files, siguiendo un patrón inspirado en un framework frontend: componentes, servicios, db, tools... Sin embargo, un problema con el import-export por módulos en JavaScript requirió un cambio rápido al enfoque que está actualmente vigente .`
 
 ### 🔎 **Evaluación**
 
@@ -54,5 +56,6 @@ A lo largo del proceso de desarrollo, se realizaron varias pruebas técnicas y d
 
 👩🏻‍💻 **Cómo funciona**
 Al entrar al sitio web, solo serán necesarios dos pasos:
-1. Ingresar las fechas de check-in y check-out, definir el status de afiliación
-2. Dar click en el botón `Consultar`. Si los campos están completos, se descubrirá una nueva sección donde se podrán visualizar los resultados de la consulta 🙂 —es posible repetir esta operación las veces que sea necesario.
+1. Ingresar las fechas de check-in y check-out, y definir el status de afiliación.
+2. Dar click en el botón `Consultar`. 
+Si los campos están completos, se descubrirá una nueva sección donde se podrán visualizar los resultados de la consulta 🙂 —es posible repetir esta operación las veces que sea necesario.
