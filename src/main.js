@@ -65,6 +65,10 @@ function seeCheaperHotel(hotels) {
         let hotel = finalResults.filter(hotel => hotel.totalPrice === minPrice);
         console.log("hotel más barato", hotel)
         console.log(minPrice)
+
+        // Ordenar hoteles por su precio total
+        const ascendentList = [...finalResults].sort((a, b) => a.totalPrice - b.totalPrice);
+        console.log("Lista ascendente",ascendentList)
         
         // Atualizar la interfaz de usuario
         setFinalResults(hotel, minPrice);
