@@ -1,8 +1,5 @@
 # BLR Hotels - Tipti Challenge
 
-Adjuntar un README con una explicación del diseño de la solución, suposiciones del
-problema e instrucciones detalladas de cómo ejecutar la aplicación.
-
 ## Análisis del problema
 
 BLR es una cadena de hoteles que opera en Miami (EEUU). BLR desea crear un sitio web donde sea posible realizar reservas de habitaciones, y cuenta con tres hoteles con distintos rangos de precio. 
@@ -17,7 +14,7 @@ Para las fases de ideación, diseño y prototipado, me basé en los principios e
 
 ### 👥 **Empatizar**
 
-Si estoy planificando mis vacaciones tan anheladas después de un semestre ajetreado, **¿me resultaría agradable o tedioso tener muchas opciones para escoger?** Posiblemente me será difícil mantener la secuencia lógica de mi búsqueda en el sitio web, y me sentiría frustrada al respecto.
+Si estoy planificando mis vacaciones tan anheladas después de un semestre ajetreado, **¿me resultaría agradable o tedioso tener muchas opciones para escoger?** Si tengo mucha información que evaluar para decidir, posiblemente me será difícil mantener la secuencia lógica de mi búsqueda en el sitio web, y me sentiría frustrada al respecto.
 
 ### 📍**Definir**
 
