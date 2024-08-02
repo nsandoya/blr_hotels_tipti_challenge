@@ -1,5 +1,6 @@
-// La función extrae los datos de los inputs tipo 'day' y los procesa, verificando además si los días reservados son fin de semana o entre semana (esto influye también en los precios)
-function scanDayByDay() {
+import { setDates } from "../components/hotelCardDetails.js";
+
+export function scanDayByDay() {
     const firstDayInput = document.getElementById('firstDay').value;
     const lastDayInput = document.getElementById('lastDay').value;
 
