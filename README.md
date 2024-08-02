@@ -43,15 +43,15 @@ Después de escoger los diseños definitivos, desarrollé el sitio web usando HT
 
 🍃 Las funciones están pensadas para ser distribuidas en varios files, siguiendo un patrón inspirado en un framework frontend: componentes, servicios, db, tools:
 
-####App: main.js
-- `fetchHotelsData` importa el servicio `getHotels` para obtener los datos de los hoteles 
-####Services
+#### App: main.js
+- `fetchHotelsData` importa el servicio `getHotels` para obtener los datos de los hoteles
+#### Services
 - `getHotels` realiza una solicitud asíncrona a GitHub para obtener los datos de los hoteles, alojados allí en un archivo .json
-####Components
+#### Components
 - `seeCheaperHotelBtn` : Ejecuta internamente varios tools (enlistados abajo) cuando el cliente realiza una consulta sobre su reserva.
 - `hotelCards` : El hotel más asequible se muestra en pantalla gracias a la función `setFinalResults`. Por otra parte, el detalle de precios de cada hotel se muestra posteriormente, bajo la main card, gracias a la función `setPriceDetails` .
 - `hotelCardDetails` contiene las funciones `setDates` y `calculateStars`, encargadas de mostrar (con estrellas) el ranking de los hoteles y las fechas de check-in y check-out del cliente.
-####Tools
+#### Tools
 - `calculatePrices` : En la función `calculatePrinces` convergen otras 'piezas' más pequeñas que generan el rango de días y los precios de los hoteles. Como segundo paso, la función toma esa info y ordena los hoteles en una lista. Además, `calculateMinPrice` calcula el precio mínimo entre todos los hoteles.
 - `clientDetails`: La función `isAfiliate` incluye un event listener que verifica si el cliente está afiliado o no al programa de recompensas de BLR.
 - `hotelPrices`: La función `hotelPrices` realiza un calculo puntual de todos los precios de los hoteles 
