@@ -1,5 +1,5 @@
 const getHotels = async () => {
-    const url = 'https://github.com/nsandoya/blr_hotels_tipti_challenge/blob/main/src/database/hotels.json';
+    const url = 'https://raw.githubusercontent.com/nsandoya/blr_hotels_tipti_challenge/main/src/database/hotels.json';
     const options = {
         method: 'GET',
         headers: {
