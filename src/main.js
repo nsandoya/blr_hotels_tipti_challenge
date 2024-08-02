@@ -1,40 +1,17 @@
+import {getHotels as fetchHotels} from "./services/getHotels.js";
 
-// DB
-const hotels = [
-    {
-        id: 1,
-        name: "Lakewood",
-        stars: 3,
-        url: "https://github.com/nsandoya/blr_hotels_tipti_challenge/blob/main/src/assets/img/lakewood.JPEG?raw=true",
-        prices: {
-            regularPrices: { weekdays: 110, weekend: 90 } ,
-            reward_prices: { weekdays: 80, weekend: 80  }
-        }
-    },
-    {
-        id: 2,
-        name: "Bridgewood",
-        stars: 4,
-        url: "https://raw.githubusercontent.com/nsandoya/blr_hotels_tipti_challenge/main/src/assets/img/bridgewood.JPG",
-        prices: {
-            regularPrices: { weekdays: 160, weekend: 60 },
-            reward_prices: { weekdays: 110, weekend: 50 }
-        }
-    },
-    {
-        id: 3,
-        name: "Ridgewood",
-        url: "https://github.com/nsandoya/blr_hotels_tipti_challenge/blob/main/src/assets/img/ridgewood.JPG?raw=true",
-        stars: 5,
-        prices: {
-            regularPrices: { weekdays: 220, weekend: 150 },
-            reward_prices: { weekdays: 100, weekend: 40 }
-        }
-    }
-];
-
+// Importar desde GitHub la lista online de hoteles
 let checkboxValue = false;
 
+const fetchHotelsData = async () => {
+    try {
+        const hotels = await fetchHotels();
+        return hotels;
+    } catch (error) {
+        console.error("Error fetching hotels:", error);
+        return [];
+    }
+};
 
 function isAfiliate() {
     let checkboxElement = document.querySelector(".checkbox");
@@ -46,7 +23,7 @@ function isAfiliate() {
 
 function calculateStars(stars){
     let ranking = ""
-    for (n=0; n< stars; n++){
+    for (let n=0; n< stars; n++){
         ranking += "★"
     }
     return ranking
@@ -106,7 +83,7 @@ function scanDayByDay() {
     }
 }
 // Calculo puntual de todos los precios de los hoteles
-function hotelPrices(hotel, weekdays, weekend, isReward) {
+const hotelPrices = (hotel, weekdays, weekend, isReward) => {
     let prices = hotel.prices;
 
     let regTotalWeekdaysPrices = weekdays * prices.regularPrices.weekdays;
@@ -123,7 +100,8 @@ function hotelPrices(hotel, weekdays, weekend, isReward) {
 }
 
 // En esta función convergen algunas de las 'piezas' (funciones más pequeñas) construidas hasta ahora. Buscamos conocer los precios de todos los hoteles, según los datos ingresados por el usuario, y ordenar los hoteles en una lista, en función de ese resultado
-function calculatePrices(hotels, isReward) {
+const calculatePrices = (hotels, isReward) => {
+    
     let totalWeekend = 0;
     let totalWeekDays = 0;
 
@@ -167,18 +145,24 @@ function calculatePrices(hotels, isReward) {
 }
 
 function calculateMinPrice(finalResults){
-    if (!finalResults || finalResults.length === 0) {
-        return 0;
-    }
-
-    let prices = finalResults.map(hotel => hotel.totalPrice);
-    let minPrice = Math.min(...prices);
+    try{
+        if (!finalResults || finalResults.length === 0) {
+            throw new TypeError("No hay fechas con las que calcular estadía")
+            //return 0;
+        }
     
-    return minPrice;
+        let prices = finalResults.map(hotel => hotel.totalPrice);
+        let minPrice = Math.min(...prices);
+        
+        return minPrice;
+
+    }catch(err){
+        console.log(err.message)
+    }
 }
 
 function seeCheaperHotel(hotels) {
-    let resultsContainer = document.querySelector(".results")
+    //let resultsContainer = document.querySelector(".results")
     let seeCheaperHotelBtn = document.querySelector(".see-results");
 
     try{
@@ -253,7 +237,7 @@ function setPriceDetails(sortedList){
                     
     priceDetails.innerHTML = `<h3>Price Detail</h3>`
     
-    for(i=0; i < sortedList.length; i++){
+    for(let i=0; i < sortedList.length; i++){
         let prices = sortedList[i].prices
         
 
@@ -303,7 +287,8 @@ function setPriceDetails(sortedList){
 }
 
 // Finalmente, todo converge aquí. Las funciones dentro contienen event listeners y event handlers, para trabajar en cuanto el usuario solicite info
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    const hotels_db = await fetchHotelsData(); // Asegúrate de esperar la resolución de fetchHotels
     isAfiliate();
-    seeCheaperHotel(hotels);
+    seeCheaperHotel(hotels_db);
 });

@@ -1,41 +1,41 @@
-export function scanDayByDay() {
-    // Obtener las fechas de inicio y fin del input
+// La función extrae los datos de los inputs tipo 'day' y los procesa, verificando además si los días reservados son fin de semana o entre semana (esto influye también en los precios)
+function scanDayByDay() {
     const firstDayInput = document.getElementById('firstDay').value;
     const lastDayInput = document.getElementById('lastDay').value;
-    
-    // Verificar si se han seleccionado ambas fechas
-    if (!firstDayInput || !lastDayInput) {
-        alert("Por favor, elige ambas fechas.");
-        return;
-    }
 
-    // Convertir las fechas del input a objetos Date
-    const firstDay = new Date(firstDayInput);
-    const lastDay = new Date(lastDayInput);
+    try{
+        if (!firstDayInput || !lastDayInput) {
+            throw new TypeError("Por favor, ingresa tu fecha de entrada y/o salida");
+        }
     
-    // Verificar que la fecha de inicio sea menor o igual a la fecha de fin
-    if (firstDay > lastDay) {
-        alert("La fecha de inicio debe ser anterior o igual a la fecha de fin.");
-        return;
-    }
-
-    // Crear un array para almacenar los results
-    const results = [];
+        const firstDay = new Date(firstDayInput + 'T00:00:00');
+        const lastDay = new Date(lastDayInput + 'T00:00:00');
     
-    // Iterar sobre cada día en el rango
-    let currentDate = firstDay;
-    while (currentDate <= lastDay) {
-        const weekDay = currentDate.getDay();
-        const isWeekend = (weekDay === 6 || weekDay === 5);
-        results.push({
-            fecha: currentDate.toISOString().split('T')[0],
-            tipo: isWeekend ? 'weekend' : 'weekday'
-        });
-        
-        // Avanzar al siguiente día
-        currentDate.setDate(currentDate.getDate() + 1);
-    }
+        setDates(firstDay.toDateString(), lastDay.toDateString()) 
+    
+        if (firstDay > lastDay) {
+            throw new TypeError("La fecha de inicio debe ser anterior o igual a la fecha de fin.");
+        }
+    
+        const results = [];
+        let currentDate = firstDay;
+    
+        while (currentDate <= lastDay) {
+            const weekDay = currentDate.getDay();
+            const isWeekend = (weekDay === 6 || weekDay === 0);
+    
+            results.push({
+                date: currentDate.toISOString().split('T')[0],
+                type: isWeekend ? 'weekend' : 'weekday'
+            });
+    
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+        return results;
 
-    console.log(results)
-    return results
+
+    } catch(err){
+        alert(err.message)
+        return[]
+    }
 }

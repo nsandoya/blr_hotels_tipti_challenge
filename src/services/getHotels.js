@@ -1,4 +1,4 @@
-const getHotels = async () => {
+export const getHotels = async () => {
     const url = 'https://raw.githubusercontent.com/nsandoya/blr_hotels_tipti_challenge/main/src/database/hotels.json';
     const options = {
         method: 'GET',
@@ -18,4 +18,4 @@ const getHotels = async () => {
 } 
 
 //export default getHotels
-getHotels()
+//export default getHotels
