@@ -137,20 +137,20 @@ function scanDayByDay() {
 function hotelPrices(hotel, weekdays, weekend, isReward) {
     let prices = hotel.prices;
 
-    let regularPrices = prices.regularPrices;
+    /* let regularPrices = prices.regularPrices;
     let rewardPrices = prices.reward_prices;
 
     let regWeekdaysPrices = regularPrices.weekdays;
     let regWeekendPrices = regularPrices.weekend;
 
     let rewWeekdaysPrices = rewardPrices.weekdays;
-    let rewWeekendPrices = rewardPrices.weekend;
+    let rewWeekendPrices = rewardPrices.weekend; */
 
-    let regTotalWeekdaysPrices = weekdays * regWeekdaysPrices;
-    let regTotalWeekendPrices = weekend * regWeekendPrices;
+    let regTotalWeekdaysPrices = weekdays * prices.regularPrices.weekdays;
+    let regTotalWeekendPrices = weekend * prices.regularPrices.weekend;
 
-    let rewTotalWeekdaysPrices = weekdays * rewWeekdaysPrices;
-    let rewTotalWeekendPrices = weekend * rewWeekendPrices;
+    let rewTotalWeekdaysPrices = weekdays * prices.rewardPrices.weekdays;
+    let rewTotalWeekendPrices = weekend * prices.rewardPrices.weekend;
 
     if (isReward) {
         return [rewTotalWeekdaysPrices, rewTotalWeekendPrices];
