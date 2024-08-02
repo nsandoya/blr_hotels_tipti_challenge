@@ -1,59 +1,32 @@
 [
     {
-        "id": 1,
+        "_id": 1,
         "name": "Lakewood",
         "stars": 3,
-        "prices":[
-            { "regular_prices": 
-                {
-                    "weekdays": 110,
-                    "weekend": 90
-                }
-            },
-            { "reward_prices": 
-                {
-                    "weekdays": 80,
-                    "weekend": 80
-                } 
-            }
-        ]
+        "url": "https://github.com/nsandoya/blr_hotels_tipti_challenge/blob/main/src/assets/img/lakewood.JPEG?raw=true",
+        "prices": {
+            "regularPrices": { "weekdays": 110, "weekend": 90 } ,
+            "reward_prices": { "weekdays": 80, "weekend": 80  }
+        }
     },
     {
-       "id": 2,
+        "_id": 2,
         "name": "Bridgewood",
         "stars": 4,
-        "prices":[
-            { "regular_prices": 
-                {
-                    "weekdays": 160,
-                    "weekend": 60
-                }
-            },
-            { "reward_prices": 
-                {
-                    "weekdays": 110,
-                    "weekend": 50
-                } 
-            }
-        ]
+        "url": "https://raw.githubusercontent.com/nsandoya/blr_hotels_tipti_challenge/main/src/assets/img/bridgewood.JPG",
+        "prices": {
+            "regularPrices": { "weekdays": 160, "weekend": 60 },
+            "reward_prices": { "weekdays": 110, "weekend": 50 }
+        }
     },
     {
-        "id": 3,
+        "_id": 3,
         "name": "Ridgewood",
+        "url": "https://github.com/nsandoya/blr_hotels_tipti_challenge/blob/main/src/assets/img/ridgewood.JPG?raw=true",
         "stars": 5,
-        "prices":[
-            { "regular_prices": 
-                {
-                    "weekdays": 220,
-                    "weekend": 150
-                }
-            },
-            { "reward_prices": 
-                {
-                    "weekdays": 100,
-                    "weekend": 40
-                } 
-            }
-        ]
+        "prices": {
+            "regularPrices": { "weekdays": 220, "weekend": 150 },
+            "reward_prices": { "weekdays": 100, "weekend": 40 }
+        }
     }
-] 
+]
