@@ -1,8 +1,8 @@
 # BLR Hotels - Tipti Challenge
 
-**Tecnologías solicitadas** - HTML, CSS, JS
-**Fecha de entrega** - 28/07/2024
-**Refactor (post challente)** - 02/08/2024
+**Tecnologías solicitadas** - HTML, CSS, JS | 
+**Fecha de entrega** - 28/07/2024 | 
+**Refactor (post challenge)** - 02/08/2024
 
 ## Análisis del problema
 
