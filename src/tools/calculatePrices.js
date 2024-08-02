@@ -1,6 +1,8 @@
 import {hotelPrices} from "./hotelPrices.js";
 import { scanDayByDay } from "./scanDaybyDay.js";
-// En esta función convergen algunas de las 'piezas' (funciones más pequeñas) construidas hasta ahora. Buscamos conocer los precios de todos los hoteles, según los datos ingresados por el usuario, y ordenar los hoteles en una lista, en función de ese resultado
+
+// En esta función convergen otras 'piezas' más pequeñas que generan el rango de días y los precios de los hoteles.
+// Como segundo paso, la función toma esa info y ordena los hoteles en una lista 
 export const calculatePrices = (hotels, isReward) => {
     
     let totalWeekend = 0;
@@ -44,7 +46,7 @@ export const calculatePrices = (hotels, isReward) => {
         return[]
     }
 }
-
+// Calcula el precio mínimo de entre todos los hoteles, según los datos ingresados por el usuario
 export function calculateMinPrice(finalResults){
     try{
         if (!finalResults || finalResults.length === 0) {

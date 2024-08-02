@@ -1,5 +1,9 @@
 # BLR Hotels - Tipti Challenge
 
+**Tecnologías solicitadas** - HTML, CSS, JS
+**Fecha de entrega** - 28/07/2024
+**Refactor (post challente)** - 02/08/2024
+
 ## Análisis del problema
 
 BLR es una cadena de hoteles que opera en Miami (EEUU). BLR desea crear un sitio web donde sea posible realizar reservas de habitaciones, y cuenta con tres hoteles con distintos rangos de precio. 
@@ -33,13 +37,25 @@ Pensé adecuado diseñar una herramienta de *pre check-in* sencilla y concreta, 
 
 ### 💻 **Prototipado y Desarrollo**
 
-En esta fase, plasmé en maquetas mis ideas sobre cómo debería ser la UI del sitio web.
+En esta fase, plasmé en maquetas mis ideas sobre cómo debería ser la UI del sitio web. 🐥 Puedes ver la maqueta definitiva aquí: https://github.com/nsandoya/blr_hotels_tipti_challenge/blob/main/src/assets/prototipe/blr_hotels_challenge.pdf
 
-🐥 Puedes ver la maqueta definitiva aquí: https://github.com/nsandoya/blr_hotels_tipti_challenge/blob/main/src/assets/prototipe/blr_hotels_challenge.pdf
+Después de escoger los diseños definitivos, desarrollé el sitio web usando HTML, CSS y JavaScript. 
 
-Después de escoger los diseños definitivos, desarrollé el sitio web usando HTML, CSS y JavaScript. En esta ocasión, usé un enfoque **funcional**: muchas piezas (funciones) van componiendo procesos cada vez más grandes para cumplir el objetivo: sugerir al usuario cuál es la opción más asequible según sus necesidades, ayudándolo así a planificar su viaje.
+🍃 Las funciones están pensadas para ser distribuidas en varios files, siguiendo un patrón inspirado en un framework frontend: componentes, servicios, db, tools:
 
-`🍃 PD: Originalmente, las funciones estaban pensadas para ser distribuidas en varios files, siguiendo un patrón inspirado en un framework frontend: componentes, servicios, db, tools... Sin embargo, un problema con el import-export por módulos en JavaScript requirió un cambio rápido al enfoque que está actualmente vigente .`
+####App: main.js
+- `fetchHotelsData` importa el servicio `getHotels` para obtener los datos de los hoteles 
+####Services
+- `getHotels` realiza una solicitud asíncrona a GitHub para obtener los datos de los hoteles, alojados allí en un archivo .json
+####Components
+- `seeCheaperHotelBtn` : Ejecuta internamente varios tools (enlistados abajo) cuando el cliente realiza una consulta sobre su reserva.
+- `hotelCards` : El hotel más asequible se muestra en pantalla gracias a la función `setFinalResults`. Por otra parte, el detalle de precios de cada hotel se muestra posteriormente, bajo la main card, gracias a la función `setPriceDetails` .
+- `hotelCardDetails` contiene las funciones `setDates` y `calculateStars`, encargadas de mostrar (con estrellas) el ranking de los hoteles y las fechas de check-in y check-out del cliente.
+####Tools
+- `calculatePrices` : En la función `calculatePrinces` convergen otras 'piezas' más pequeñas que generan el rango de días y los precios de los hoteles. Como segundo paso, la función toma esa info y ordena los hoteles en una lista. Además, `calculateMinPrice` calcula el precio mínimo entre todos los hoteles.
+- `clientDetails`: La función `isAfiliate` incluye un event listener que verifica si el cliente está afiliado o no al programa de recompensas de BLR.
+- `hotelPrices`: La función `hotelPrices` realiza un calculo puntual de todos los precios de los hoteles 
+- `scanDayByDay`: La función `scanDayByDay` verifica que los inputs tipo date del sitio web contengan fechas válidas y, a partir de ellas, evalúa qué fechas son parte del fin de semana o son weekdays.
 
 ### 🔎 **Evaluación**
 
@@ -47,7 +63,7 @@ A lo largo del proceso de desarrollo, se realizaron varias pruebas técnicas y d
 
 ## Instrucciones: Cómo ejecutar la aplicación
 🤖 **Despliegue**
-- El sitio web de BLR cuenta con procesos internos que no requieren conectarse a una DDBB en la nube ni inicializar un servidor —el website ha sido desplegado en `GitHub Pages`: https://nsandoya.github.io/blr_hotels_tipti_challenge/
+- El sitio web de BLR ha sido desplegado en `GitHub Pages`: https://nsandoya.github.io/blr_hotels_tipti_challenge/
 
 - Además del sitio online, es posible descargar el fichero y probarlo localmente, usando `Live Server` u otros servicios similares. Para descargar el fichero en tu PC, puedes descargarlo en formato `.zip` dirigiéndote al botón `Code → Download ZIP`, en la página principal del repositorio del proyecto.
 
