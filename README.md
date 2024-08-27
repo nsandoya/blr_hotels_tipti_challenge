@@ -65,7 +65,7 @@ A lo largo del proceso de desarrollo, se realizaron varias pruebas técnicas y d
 🤖 **Despliegue**
 - El sitio web de BLR ha sido desplegado en `GitHub Pages`: https://nsandoya.github.io/blr_hotels_tipti_challenge/
 
-- Además del sitio online, es posible descargar el fichero y probarlo localmente, usando `Live Server` u otros servicios similares. Para descargar el fichero en tu PC, puedes descargarlo en formato `.zip` dirigiéndote al botón `Code → Download ZIP`, en la página principal del repositorio del proyecto.
+- Además del sitio online, es posible descargar el fichero y probarlo localmente, usando `Live Server` u otros servicios similares. Para descargar el fichero en tu PC, puedes dirigirte al botón `Code → Download ZIP`, en la página principal del repositorio del proyecto. Obtendrás el proyecto en formato `.zip`.
 
 👩🏻‍💻 **Cómo funciona**
 Al entrar al sitio web, solo serán necesarios dos pasos:
